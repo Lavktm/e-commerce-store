@@ -17,6 +17,12 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = ({
     data
 }) => {
+    const cart = useCart()
+
+    const onRemove = () => {
+        cart.removeItem(data.id)
+    }
+
     return (
         <li className="flex py-6 border-b" >
             <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48
@@ -31,7 +37,7 @@ const CartItem: React.FC<CartItemProps> = ({
             <div className="relative ml-4 flex flex-1 flex-col sm:ml-6">
                 <div className="absolute z-10 right-0 top-0">
                     <IconButton
-                        onClick={() => { }}
+                        onClick={onRemove}
                         icon={<X size={15} />}
                     />
                 </div>
@@ -45,7 +51,7 @@ const CartItem: React.FC<CartItemProps> = ({
                         <p className="text-gray-500">{data.color.name}</p>
                         <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">{data.size.name}</p>
                     </div>
-
+                    <Currency value={data.price} />
                 </div>
 
             </div>

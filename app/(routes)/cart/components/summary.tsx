@@ -61,7 +61,7 @@ const Summary: React.FC<SummaryProps> = () => {
                 <Currency value={totalPrice} />
             </div>
         </div>
-        <Button className="w-full mt-6" onClick={onCheckOut}>
+        <Button className="w-full mt-6" onClick={onCheckOut} disabled={items.length === 0}>
             Check Out
         </Button>
 
